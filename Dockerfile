@@ -1,20 +1,25 @@
 # Stage 1: Build Next.js app
-FROM node:18-bullseye AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 
+# Install dependencies
 COPY package.json package-lock.json ./
 RUN npm ci
 
+# Copy rest of the app
 COPY . .
+
+# Build static site
 RUN npm run build
 
-# Stage 2: Run app with Node
-FROM node:18-bullseye
-WORKDIR /app
+# Stage 2: Serve with Nginx
+FROM nginx:alpine
 
-COPY --from=builder /app ./
+# Copy static build from previous stage
+COPY --from=builder /app/out /usr/share/nginx/html
 
-ENV NODE_ENV=production
+# Overwrite default Nginx config with SPA-ready config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
-
-CMD ["npx", "next", "start", "-p", "80"]
+CMD ["nginx", "-g", "daemon off;"]
