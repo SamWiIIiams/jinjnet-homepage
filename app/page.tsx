@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Film, Image, Gauge, MonitorSmartphone } from "lucide-react";
+import { Film, Image, Gauge, MonitorSmartphone, Share2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function HomePage() {
@@ -33,6 +33,21 @@ export default function HomePage() {
     },
   ];
 
+  const sharedAlbums = [
+    {
+      name: "Wedding Album",
+      description: "Shared memories from the wedding.",
+      icon: Share2,
+      url: "https://immich.jinjnet.com/s/wedding",
+    },
+    {
+      name: "MTB Adventures",
+      description: "Mountain biking photos and videos.",
+      icon: Share2,
+      url: "https://immich.jinjnet.com/s/MTB",
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-white flex flex-col items-center justify-center p-6">
       <motion.h1
@@ -44,7 +59,8 @@ export default function HomePage() {
         Welcome to Jinjnet
       </motion.h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl w-full">
+      {/* Main services section */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl w-full mb-16">
         {services.map((service, idx) => (
           <motion.div
             key={service.name}
@@ -65,6 +81,45 @@ export default function HomePage() {
                 >
                   <a href={service.url} target="_blank" rel="noopener noreferrer">
                     Visit
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Shared albums section */}
+      <motion.h2
+        className="text-3xl font-semibold mb-6 text-center"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Shared Immich Albums
+      </motion.h2>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl w-full">
+        {sharedAlbums.map((album, idx) => (
+          <motion.div
+            key={album.name}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.1 + 0.2 }}
+          >
+            <Card className="bg-slate-800 border border-slate-700 hover:border-green-500 transition-all hover:shadow-lg hover:shadow-green-500/20">
+              <CardHeader className="flex flex-col items-center text-center">
+                <album.icon className="w-10 h-10 mb-2 text-green-400" />
+                <CardTitle>{album.name}</CardTitle>
+              </CardHeader>
+              <CardContent className="text-slate-300 text-sm text-center">
+                <p>{album.description}</p>
+                <Button
+                  className="mt-4 w-full bg-green-500 hover:bg-green-600"
+                  asChild
+                >
+                  <a href={album.url} target="_blank" rel="noopener noreferrer">
+                    View Album
                   </a>
                 </Button>
               </CardContent>

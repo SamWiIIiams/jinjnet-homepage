@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  jinjnet-homepage:
+    image: swilli23/jinjnet-homepage:latest
+    container_name: jinjnet-homepage
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      - homepage_network
+
+networks:
+  homepage_network:
+    driver: bridge
