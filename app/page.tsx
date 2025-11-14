@@ -36,7 +36,7 @@ export default function HomePage() {
   const sharedAlbums = [
     {
       name: "Wedding Album",
-      description: "Shared memories from the wedding.",
+      description: "Shared memories from the wedding of Marissa and Sam.",
       icon: Share2,
       url: "https://immich.jinjnet.com/s/wedding",
     },
