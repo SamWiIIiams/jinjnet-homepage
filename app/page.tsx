@@ -134,8 +134,7 @@ export default function HomePage() {
       >
         Shared Immich Albums
       </motion.h2>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl w-full mb-8">
         {sharedAlbums.map((album, idx) => (
           <motion.div
             key={album.name}
@@ -173,7 +172,7 @@ export default function HomePage() {
         Professional Links
       </motion.h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl w-full mt-12">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl w-full">
         {personalLinks.map((item, idx) => (
           <motion.div
             key={item.name}
