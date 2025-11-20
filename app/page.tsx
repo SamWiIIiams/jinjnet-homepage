@@ -31,7 +31,7 @@ export default function HomePage() {
       name: "LibreSpeed",
       description: "Test your connection speed directly to the Jinjnet server.",
       icon: Gauge,
-      url: "https://speed.jinjnet.com",
+      url: "https://speedtest.jinjnet.com",
     },
     {
       name: "Jellyseerr",
