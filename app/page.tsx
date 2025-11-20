@@ -164,6 +164,15 @@ export default function HomePage() {
         ))}
       </div>
 
+      <motion.h2
+        className="text-3xl font-semibold mb-6 text-center"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Professional Links
+      </motion.h2>
+
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl w-full mt-12">
         {personalLinks.map((item, idx) => (
           <motion.div
