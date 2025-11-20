@@ -2,32 +2,40 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Film, Image, Gauge, MonitorSmartphone, Share2 } from "lucide-react";
+import {
+  Film,
+  Image,
+  Gauge,
+  MonitorSmartphone,
+  Share2,
+  FileText,
+} from "lucide-react";
+import { SiGithub, SiDocker } from "@icons-pack/react-simple-icons";
 import { motion } from "framer-motion";
 
 export default function HomePage() {
   const services = [
     {
       name: "Immich",
-      description: "Personal photo and video library for your memories.",
+      description: "Access your personal Jinjnet photo and video library from any device.",
       icon: Image,
       url: "https://immich.jinjnet.com",
     },
     {
       name: "Jellyfin",
-      description: "Stream your media anywhere, anytime.",
+      description: "Stream movies, shows, and media anywhere you go.",
       icon: Film,
       url: "https://jellyfin.jinjnet.com",
     },
     {
       name: "LibreSpeed",
-      description: "Test your connection speed on your own server.",
+      description: "Test your connection speed directly to the Jinjnet server.",
       icon: Gauge,
       url: "https://speed.jinjnet.com",
     },
     {
       name: "Jellyseerr",
-      description: "Request movies and shows for your Jellyfin library.",
+      description: "Request new movies and TV shows to be added to the Jellyfin library.",
       icon: MonitorSmartphone,
       url: "https://requests.jinjnet.com",
     },
@@ -45,6 +53,30 @@ export default function HomePage() {
       description: "Mountain biking photos and videos.",
       icon: Share2,
       url: "https://immich.jinjnet.com/s/MTB",
+    },
+  ];
+
+  const personalLinks = [
+    {
+      name: "GitHub",
+      description: "Check out my projects and repos.",
+      icon: SiGithub,
+      url: "https://github.com/SamWiIIiams",
+      color: "text-gray-200",
+    },
+    {
+      name: "DockerHub",
+      description: "Explore my Docker images.",
+      icon: SiDocker,
+      url: "https://hub.docker.com/repositories/swilli23",
+      color: "text-blue-500",
+    },
+    {
+      name: "Resume",
+      description: "View my resume online.",
+      icon: FileText,
+      url: "/resume",
+      color: "text-yellow-500",
     },
   ];
 
@@ -69,7 +101,7 @@ export default function HomePage() {
             transition={{ delay: idx * 0.1 + 0.3 }}
           >
             <Card className="bg-slate-800 border border-slate-700 hover:border-blue-500 transition-all hover:shadow-lg hover:shadow-blue-500/20">
-              <CardHeader className="flex flex-col items-center text-center">
+              <CardHeader className="flex flex-col items-center text-center text-gray-200">
                 <service.icon className="w-12 h-12 mb-3 text-blue-400" />
                 <CardTitle>{service.name}</CardTitle>
               </CardHeader>
@@ -79,7 +111,11 @@ export default function HomePage() {
                   className="mt-4 w-full bg-blue-500 hover:bg-blue-600"
                   asChild
                 >
-                  <a href={service.url} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={service.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Visit
                   </a>
                 </Button>
@@ -108,7 +144,7 @@ export default function HomePage() {
             transition={{ delay: idx * 0.1 + 0.2 }}
           >
             <Card className="bg-slate-800 border border-slate-700 hover:border-green-500 transition-all hover:shadow-lg hover:shadow-green-500/20">
-              <CardHeader className="flex flex-col items-center text-center">
+              <CardHeader className="flex flex-col items-center text-center text-gray-200">
                 <album.icon className="w-10 h-10 mb-2 text-green-400" />
                 <CardTitle>{album.name}</CardTitle>
               </CardHeader>
@@ -120,6 +156,45 @@ export default function HomePage() {
                 >
                   <a href={album.url} target="_blank" rel="noopener noreferrer">
                     View Album
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl w-full mt-12">
+        {personalLinks.map((item, idx) => (
+          <motion.div
+            key={item.name}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.1 }}
+          >
+            <Card
+              className={`bg-slate-800 border border-slate-700 hover:border-purple-500 transition-all hover:shadow-lg hover:shadow-purple-500/20`}
+            >
+              <CardHeader className="flex flex-col items-center text-center text-gray-200">
+                <item.icon className={`w-10 h-10 mb-2 ${item.color}`} />
+                <CardTitle>{item.name}</CardTitle>
+              </CardHeader>
+              <CardContent className="text-slate-300 text-sm text-center">
+                <p>{item.description}</p>
+                <Button
+                  className={`mt-4 w-full bg-purple-500 hover:bg-purple-600`}
+                  asChild
+                >
+                  <a
+                    href={item.url}
+                    target={item.url.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      item.url.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                  >
+                    Visit
                   </a>
                 </Button>
               </CardContent>
