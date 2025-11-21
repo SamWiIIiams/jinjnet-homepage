@@ -4,7 +4,7 @@ sammwilliams@proton.me | 301-787-2133 | [github.com/SamWiIIiams](https://github.
 ---
 
 ## SUMMARY
-Results-driven Lead Software Engineer with 7+ years of experience architecting and delivering scalable full-stack applications, containerized services, and automated deployment pipelines. Skilled at modern web technologies, DevOps automation, mentoring teams, and building maintainable, high-performance platforms.
+Results-driven Lead Software Engineer with 10+ years of experience architecting and delivering scalable full-stack applications, containerized services, and automated deployment pipelines. Skilled at modern web technologies, DevOps automation, mentoring teams, and building maintainable, high-performance platforms.
 
 ---
 
